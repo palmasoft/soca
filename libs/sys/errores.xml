@@ -1,0 +1,114 @@
+<errores>
+    <error>
+        <ID_ERROR>1</ID_ERROR>
+        <TIPO_ERROR>ARCHIVOS</TIPO_ERROR>
+        <COD_ERROR>101</COD_ERROR>
+        <TITULO_ERROR>NO SE ENCONTRÓ EL ARCHIVO DE LA VISTA</TITULO_ERROR>
+        <CAUSA_ERROR>Parece que hace falta el archivo que desea visualizar como una vista.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>2</ID_ERROR>
+        <TIPO_ERROR>ARCHIVOS</TIPO_ERROR>
+        <COD_ERROR>102</COD_ERROR>
+        <TITULO_ERROR>NO SE ENCONTRÓ EL MODELO DE DATOS</TITULO_ERROR>
+        <CAUSA_ERROR>Parece que hace falta el archivo con el modelo de datos que necesita el sistema.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>3</ID_ERROR>
+        <TIPO_ERROR>ARCHIVOS</TIPO_ERROR>
+        <COD_ERROR>103</COD_ERROR>
+        <TITULO_ERROR>NO SE ENCONTRÓ UN CONTROLADOR PARA LA OPERACION</TITULO_ERROR>
+        <CAUSA_ERROR>Parece que hace falta el archivo del controlador encargado de l aoperacion que solicitaste</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>4</ID_ERROR>
+        <TIPO_ERROR>ARCHIVOS</TIPO_ERROR>
+        <COD_ERROR>104</COD_ERROR>
+        <TITULO_ERROR>NO SE ENCONTRÓ LA PLANTILLA CONFIGURADA</TITULO_ERROR>
+        <CAUSA_ERROR>Parece que el nombre de la plantilla no coincide con alguna de las existentes.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>5</ID_ERROR>
+        <TIPO_ERROR>ARCHIVOS</TIPO_ERROR>
+        <COD_ERROR>105</COD_ERROR>
+        <TITULO_ERROR>NO SE ENCONTRÓ EL ARCHIVO PARA INICIAR SESION</TITULO_ERROR>
+        <CAUSA_ERROR>Parece que no se encuentra el archivo &quot;login&quot; dentro de la plantilla definida.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>5</ID_ERROR>
+        <TIPO_ERROR>ARCHIVOS</TIPO_ERROR>
+        <COD_ERROR>106</COD_ERROR>
+        <TITULO_ERROR>NO SE ENCONTRÓ EL ARCHIVO PARA LA ADMINISTRACION DEL SISTEMA</TITULO_ERROR>
+        <CAUSA_ERROR>Parece que no se encuentra el archivo &quot;admin&quot; dentro de la plantilla definida.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>6</ID_ERROR>
+        <TIPO_ERROR>SISTEMA</TIPO_ERROR>
+        <COD_ERROR>201</COD_ERROR>
+        <TITULO_ERROR>NO COINCIDE EL NOMBRE DE LA CLASE PARA EL CONTROLADOR</TITULO_ERROR>
+        <CAUSA_ERROR>El archivo del controlador no tiene la clase solicitada, o el nombre no coincide con el que esta escrito.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>7</ID_ERROR>
+        <TIPO_ERROR>SISTEMA</TIPO_ERROR>
+        <COD_ERROR>202</COD_ERROR>
+        <TITULO_ERROR>NO EXISTE LA OPERACION SOLICITADA</TITULO_ERROR>
+        <CAUSA_ERROR>No se encontró la operación solicitada, en el controlador asignado.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>8</ID_ERROR>
+        <TIPO_ERROR>DATOS</TIPO_ERROR>
+        <COD_ERROR>1001</COD_ERROR>
+        <TITULO_ERROR>NO EXISTE EMPRESA PARA EL CODIGO</TITULO_ERROR>
+        <CAUSA_ERROR>EL codigo consultado no pertenece a ninguna empresa o negocio registrado en nuestro sistema.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Verifica los datos digitados. Si el problema persiste, consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>9</ID_ERROR>
+        <TIPO_ERROR>DATOS</TIPO_ERROR>
+        <COD_ERROR>1002</COD_ERROR>
+        <TITULO_ERROR>LA EMPRESA NO ESTA ACTIVA ACTUALMENTE.</TITULO_ERROR>
+        <CAUSA_ERROR>Tu empresa se encuentra suspendida o no esta activa para ingresar a nuestro sistema.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Te recomendamos comunicarte con el Área Comercial o Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>10</ID_ERROR>
+        <TIPO_ERROR>DATOS</TIPO_ERROR>
+        <COD_ERROR>1003</COD_ERROR>
+        <TITULO_ERROR>EL USUARIO NO EXISTE PARA LA EMPRESA</TITULO_ERROR>
+        <CAUSA_ERROR>Los datos digitados de usuario no coinciden con ninguno de los registrados para su negocio.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>11</ID_ERROR>
+        <TIPO_ERROR>DATOS</TIPO_ERROR>
+        <COD_ERROR>1004</COD_ERROR>
+        <TITULO_ERROR>EL USUARIO NO ESTA ACTIVO ACTUALMENTE.</TITULO_ERROR>
+        <CAUSA_ERROR>El usuario al que le corresponden los datos no esta activo o no tiene permitido ingresar al sistema.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>12</ID_ERROR>
+        <TIPO_ERROR>DATOS</TIPO_ERROR>
+        <COD_ERROR>1005</COD_ERROR>
+        <TITULO_ERROR>EL USUARIO Y CONTRASEÑA NO COINCIDEN</TITULO_ERROR>
+        <CAUSA_ERROR>VErfica que los datos que has digitado realmente coincidan con los datos asignados.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+    <error>
+        <ID_ERROR>13</ID_ERROR>
+        <TIPO_ERROR>DATOS</TIPO_ERROR>
+        <COD_ERROR>1000</COD_ERROR>
+        <TITULO_ERROR>NO SE PUDO CONECTAR A LA BASE DE LA EMPRESA</TITULO_ERROR>
+        <CAUSA_ERROR>Parece que los datos de la conexion a tu base de datos no son validos.</CAUSA_ERROR>
+        <SOLUCION_ERROR>Consulta con el administrador del sistema.</SOLUCION_ERROR>
+    </error>
+</errores>

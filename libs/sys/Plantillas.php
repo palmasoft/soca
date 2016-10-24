@@ -1,4 +1,5 @@
 <?php
+
 class Plantillas extends Base {
   protected
    $usuario;
@@ -37,17 +38,17 @@ class Plantillas extends Base {
     self::$ruta_tmpl_admin = self::$ruta . "admin.php";
     self::$ruta_tmpl_offline = self::$ruta . "offline.php";
     try {
-      if(Visitante::esta_logueado()) {
-        //Visitante::cerrar();
+      if(Usuario::esta_logueado()) {
+        //Usuario::cerrar();
         //print_r( $_SESSION );
         $namePlantilla = Parametros::valor('plantilla_admin');
         self::$ruta = PATH_PLANTILLAS . $namePlantilla . DS;
-        self::$ruta_archivos_usuario = PATH_ARCHIVOS . Visitante::nombreUsuario() . DS;
+        self::$ruta_archivos_usuario = PATH_ARCHIVOS . Usuario::nombreUsuario() . DS;
         self::$ruta_tmpl_login = self::$ruta . "login.php";
         self::$ruta_tmpl_admin = self::$ruta . "admin.php";
 
         self::$url = URL_PLANTILLAS . $namePlantilla . "/";
-        self::$url_archivos_usuario = URL_ARCHIVOS . Visitante::nombreUsuario() . "/";
+        self::$url_archivos_usuario = URL_ARCHIVOS . Usuario::nombreUsuario() . "/";
       }
     } catch(Exception $e) {
       
@@ -76,12 +77,12 @@ class Plantillas extends Base {
     //self::min_css();
     Modelos::cargar('Sistema' . DS . 'Componentes');
     Modelos::cargar('Sistema' . DS . 'Usuarios');
-    $User = Usuarios::datos_del_usuario(Visitante::idUsuario());
+    $User = Usuarios::datos_del_usuario(Usuario::idUsuario());
 
     if($User->usuarioId == '0') {
       $User->componentes = Componentes::todos_con_permisos();
     } else {
-      $User->componentes = Componentes::asignados_con_permisos(Visitante::idUsuario());
+      $User->componentes = Componentes::asignados_con_permisos(Usuario::idUsuario());
     }
     Config::set('OXYMED_USR', $User);
 
@@ -376,7 +377,7 @@ static
   }
 
   function menu_usuario() {
-    return Visitante::menu();
+    return Usuario::menu();
   }
 
 }
