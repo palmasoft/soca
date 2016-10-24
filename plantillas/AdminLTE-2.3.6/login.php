@@ -33,7 +33,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">digite sus datos de usuario</p>
 
-        <form action="plantillas/AdminLTE-2.3.6/index2.html" method="post">
+        <form id="frm-login" method="post" onsubmit="return false;" >
           <div class="form-group has-feedback">
             <input type="email" class="form-control" placeholder="correo">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -43,7 +43,8 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
-            <div class="col-xs-8">              
+            <div class="col-xs-8">      
+              <div id="div-resp-login" class="animated " style="font-style: italic; font-weight: 900; font-color: red;" ></div>
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
@@ -65,13 +66,32 @@
     <!-- iCheck -->
     <script src="plantillas/AdminLTE-2.3.6/plugins/iCheck/icheck.min.js"></script>
     <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
+          $(function () {
+            $('input').iCheck({
+              checkboxClass: 'icheckbox_square-blue',
+              radioClass: 'iradio_square-blue',
+              increaseArea: '20%' // optional
+            });
+
+            $("#frm-login").submit(function () {
+              $.post("controlador.php", $(this).serialize(), function (data) {
+                //alert(data);
+                var respuesta = JSON.parse(data);
+                $("#div-resp-login").removeClass('hinge');
+                $("#div-resp-login").html(respuesta.MENSAJE_RESPUESTA);
+                $("#div-resp-login").addClass('flash shake');
+                if (respuesta.TIPO_RESPUESTA == 'EXITO') {
+                  location = './';
+                } else {
+                  setTimeout(function () {
+                    $("#div-resp-login").removeClass('flash shake');
+                    $("#div-resp-login").addClass('hinge');
+                  }, 4321);
+                }
+              });
+            });
+
+          });
     </script>
   </body>
 </html>
