@@ -3,8 +3,13 @@
   El FrontController es el que recibe todas las peticiones,
   incluye algunos ficheros, busca el controlador y llama a la acci�n que corresponde.
  */
-require 'libs/Plantillas.php';
+require 'libs/Base.php';
 require 'libs/Parametros.php';
+require 'libs/Plantillas.php';
+require 'libs/mvc/Conexion.php';
+require 'libs/mvc/Modelos.php';
+require 'libs/mvc/Controladores.php';
+require 'libs/mvc/Vistas.php';
 class Soca2 {
 
   static function frontUI() {

@@ -4,6 +4,7 @@
   implementa el patron singleton para mantener una única instancia y poder acceder
   a sus valores desde cualquier sitio.
  */
+require_once('libs/util/Xml.php');
 class Parametros {
   public static
    $parametros;
