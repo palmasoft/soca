@@ -9,6 +9,6 @@
  *
  * @author Toshiba
  */
-class enBlanco {
+class EnBlanco {
   //put your code here
 }
