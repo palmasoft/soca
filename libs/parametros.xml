@@ -1,0 +1,39 @@
+<PARAMETROS>
+  <siglas_sistema>S.I.O.M.</siglas_sistema>
+  <version_sistema>1.1.1</version_sistema>
+  <web_organizacion>http://www.oximeiser.com/</web_organizacion>
+  <logo_organizacion>/logos/logo_oximed.png</logo_organizacion>
+  <nombre_organizacion>Oximed Meiser S.A.S.</nombre_organizacion>
+  <identificacion_organizacion>819.000.4.970-9</identificacion_organizacion>
+  <direccion_organizacion>Avenida del Ferrocarril No. 29C-43 | Santa Marta, Magdalena - Colombia</direccion_organizacion>
+  <telefono_organizacion>+57(5)4205002 - +57(5)4205003</telefono_organizacion>
+  <celular_organizacion>3004978857</celular_organizacion>
+  <correo_organizacion>hola@oximeiser.com</correo_organizacion>
+  <titulo_sistema>Sistema de Informacion de Oximed Meiser S.A.S.</titulo_sistema>
+  <plantilla>oximed</plantilla>
+  <plantilla_admin>oximed</plantilla_admin>
+  <dias_recogida>27</dias_recogida> 
+  <dias_alerta_recogida>27</dias_alerta_recogida>
+  <lat_organizacion>11.227442290719976</lat_organizacion>
+  <lng_organizacion>-74.196954430081</lng_organizacion>  
+  
+  
+  <correo_pedidos>mipedido@oximeiser.com</correo_pedidos>
+  <nombre_pedidos>Mi Pedido</nombre_pedidos>
+  
+  <informacion_legal_depositos>
+    <![CDATA[
+      <em>
+        <strong>Términos y condiciones del depósito.</strong>
+        El depósito es reembolsable. Se entrega al momento de la devolución de los equipos siempre y cuando este sea devuelto en las condiciones como fue entregado. El depósito únicamente se entrega a la (s) referencia(s) autorizadas inicialmente presentado el documento de identidad.
+      </em>
+    ]]>
+  </informacion_legal_depositos>
+  <informacion_legal_servicio_equipos>
+    <![CDATA[
+      <em>
+        <strong>Términos y condiciones del servicio.</strong>
+        El cliente declara recibir los productos conforme a la descripción anterior y se responsabiliza de su manejo y aplicación a partir de recibido. Los equipos son propiedad de OXIMED MEISER SAS, salvo aquellos estipulados como propiedad del cliente, y son entregados en comodato para causación del servicio. OXIMED MEISER SAS cobrará el alquiler mensual vigente anticipado pasados 30 días a partir de la fecha de recibido si el cliente aún tiene el equipo.</em>
+    ]]>
+  </informacion_legal_servicio_equipos>
+</PARAMETROS>
