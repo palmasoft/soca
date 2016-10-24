@@ -25,23 +25,25 @@ define('URL_BASE', Urls::servidor());
 
 define('PATH_LOGS', PATH_BASE . 'logs' . DS);
 define('PATH_PLANTILLAS', PATH_BASE . 'plantillas' . DS);
-define('PATH_ARCHIVOS', PATH_BASE . 'archivos' . DS . 'oximeiser' . DS);
+define('PATH_ARCHIVOS', PATH_BASE . 'archivos' . DS);
 define('PATH_LIBS', PATH_BASE . 'libs' . DS);
-define('PATH_COMPONENTES', PATH_BASE . 'componentes' . DS);
+define('PATH_COMPONENTES', PATH_BASE . 'modulos' . DS);
+define('DIR_MODELOS', PATH_BASE . 'modelos' . DS);
+define('EXT_MODELOS', '.model.php');
+define('DIR_CONTROLADORES', 'controladores');
+define('EXT_CONTROLADORES', '.control.php');
 define('DIR_VISTAS', 'vistas');
-define('EXT_VISTAS', '.html.php');
+define('EXT_VISTAS', '.vista.php');
 define('DIR_ESTILOS', 'estilos');
 define('EXT_ESTILOS', '.css');
 define('DIR_SCRIPTS', 'funciones');
 define('EXT_SCRIPTS', '.js');
-define('PATH_MODELOS', PATH_BASE . 'modelos' . DS);
-define('EXT_MODELOS', 'modelo');
 
 
-define('URL_PLANTILLAS', URL_BASE . 'plantillas/');
-define('URL_ARCHIVOS', URL_BASE . 'archivos/oximeiser/');
-define('URL_LIBS', URL_BASE . 'libs/');
-define('URL_COMPONENTES', URL_BASE . 'componentes/');
+define('URL_PLANTILLAS', URL_BASE . 'plantillas' . WS);
+define('URL_ARCHIVOS', URL_BASE . 'archivos' . WS);
+define('URL_LIBS', URL_BASE . 'libs' . WS);
+define('URL_COMPONENTES', URL_BASE . 'componentes' . WS);
 
 //CONEXION A LA BSE DE DATOS DEL ADMINISTRADOR
 define('dbtype_basico', 'mysql');
