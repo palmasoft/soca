@@ -1,5 +1,4 @@
 <?php
-
 class Plantillas extends Base {
   protected
    $usuario;

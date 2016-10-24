@@ -1,39 +1,40 @@
 <PARAMETROS>
-  <siglas_sistema>S.I.O.M.</siglas_sistema>
-  <version_sistema>1.1.1</version_sistema>
-  <web_organizacion>http://www.oximeiser.com/</web_organizacion>
-  <logo_organizacion>/logos/logo_oximed.png</logo_organizacion>
-  <nombre_organizacion>Oximed Meiser S.A.S.</nombre_organizacion>
-  <identificacion_organizacion>819.000.4.970-9</identificacion_organizacion>
-  <direccion_organizacion>Avenida del Ferrocarril No. 29C-43 | Santa Marta, Magdalena - Colombia</direccion_organizacion>
-  <telefono_organizacion>+57(5)4205002 - +57(5)4205003</telefono_organizacion>
+  <siglas_sistema>S.O.C.A.</siglas_sistema>
+  <version_sistema>1.0.0</version_sistema>
+  <web_organizacion>http://www.oneclassecuador.com.ec/</web_organizacion>
+  <logo_organizacion>media/logos/logo.png</logo_organizacion>
+  <logo_organizacion_opaco>media/logos/logo_opaco.png</logo_organizacion_opaco>
+  <grupo_empresarial>ONE CLASS GROUP</grupo_empresarial>
+  <nombre_organizacion>NASELLORIL S.A.</nombre_organizacion>
+  <identificacion_organizacion>099.280.780.600.1</identificacion_organizacion>
+  <direccion_organizacion>Av. Carlos Julio Arosemena. C.C. Alban Borja Puerta 1 Local 75. Guayaquil, Ecuador.</direccion_organizacion>
+  <telefono_organizacion>Guayaquil (04)220 32 75 /70/73 â€“ Quito (02) 514 77 26 â€“ Quininde (06) 273 79 54</telefono_organizacion>
   <celular_organizacion>3004978857</celular_organizacion>
-  <correo_organizacion>hola@oximeiser.com</correo_organizacion>
+  <correo_organizacion>reservasoc@oneclassecuador.com.ec</correo_organizacion>
+  <correo_reservas>reservasoc@oneclassecuador.com.ec</correo_reservas>
+  <correo_servicios>servioc@oneclassecuador.com.ec</correo_servicios>
   <titulo_sistema>Sistema de Informacion de Oximed Meiser S.A.S.</titulo_sistema>
-  <plantilla>oximed</plantilla>
-  <plantilla_admin>oximed</plantilla_admin>
+  <nombre_gerente>Carlos Lenin Fernandez</nombre_gerente>
+  <cedula_gerente>095620007-5</cedula_gerente>
+  <plantilla>AdminLTE-2.3.6</plantilla>
+  <plantilla_admin>AdminLTE-2.3.6</plantilla_admin>
   <dias_recogida>27</dias_recogida> 
   <dias_alerta_recogida>27</dias_alerta_recogida>
-  <lat_organizacion>11.227442290719976</lat_organizacion>
-  <lng_organizacion>-74.196954430081</lng_organizacion>  
+  <lat_organizacion>-2.168474</lat_organizacion>
+  <lng_organizacion>-79.916821</lng_organizacion>  
+   
+    
+  <gastos_legales_afiliacion>350</gastos_legales_afiliacion>
+  <valor_ano_afiliacion>500</valor_ano_afiliacion>
+  <iva_servicios>0</iva_servicios>
+  <max_meses_inicial_afiliado>12</max_meses_inicial_afiliado>
   
-  
-  <correo_pedidos>mipedido@oximeiser.com</correo_pedidos>
-  <nombre_pedidos>Mi Pedido</nombre_pedidos>
-  
-  <informacion_legal_depositos>
+  <informacion_legal_correos>
     <![CDATA[
       <em>
-        <strong>Términos y condiciones del depósito.</strong>
-        El depósito es reembolsable. Se entrega al momento de la devolución de los equipos siempre y cuando este sea devuelto en las condiciones como fue entregado. El depósito únicamente se entrega a la (s) referencia(s) autorizadas inicialmente presentado el documento de identidad.
+        La informaci&oacute;n contenida en este correo electr&oacute;nico y en todos sus archivos anexos, es confidencial y/o privilegiada y sÃƒÂ³lo puede ser utilizada por la(s) persona(s) a la(s) cual(es) estÃƒÂ¡ dirigida. Si usted no es el destinatario autorizado, cualquier modificaciÃƒÂ³n, retenciÃƒÂ³n, difusiÃƒÂ³n, distribuciÃƒÂ³n o copia total o parcial de este mensaje y/o de la informaciÃƒÂ³n contenida en el mismo y/o en sus archivos anexos estÃƒÂ¡ prohibida y son sancionadas por la ley. Si por error recibe este mensaje, le ofrecemos disculpas, sÃƒÂ­rvase borrarlo de inmediato, notificarle de su error a la persona que lo enviÃƒÂ³ y abstenerse de divulgar su contenido y anexos.
       </em>
     ]]>
-  </informacion_legal_depositos>
-  <informacion_legal_servicio_equipos>
-    <![CDATA[
-      <em>
-        <strong>Términos y condiciones del servicio.</strong>
-        El cliente declara recibir los productos conforme a la descripción anterior y se responsabiliza de su manejo y aplicación a partir de recibido. Los equipos son propiedad de OXIMED MEISER SAS, salvo aquellos estipulados como propiedad del cliente, y son entregados en comodato para causación del servicio. OXIMED MEISER SAS cobrará el alquiler mensual vigente anticipado pasados 30 días a partir de la fecha de recibido si el cliente aún tiene el equipo.</em>
-    ]]>
-  </informacion_legal_servicio_equipos>
+  </informacion_legal_correos>
+  
 </PARAMETROS>
