@@ -9,6 +9,6 @@
  *
  * @author Toshiba
  */
-class EnBlanco {
+class EnBlanco extends Modelos {
   //put your code here
 }
