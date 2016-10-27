@@ -28,8 +28,7 @@ class Libs {
     require_once 'libs/util/Textos.php'; //funciones para manejo de textos
     require_once 'libs/util/Numeros.php'; //funciones para manejo de numeros
     require_once 'libs/util/Color.php'; //funciones para manejo de colores
-
-
+    require_once 'libs/util/Respuestas.php'; //funciones para manejo de colores
 //    require_once 'libs/correos/Correos.php'; //funciones para manejo de colores
 //    require_once 'libs/docs/pdf/tcpdf/tcpdf.php'; //funciones para manejo de colores
   }

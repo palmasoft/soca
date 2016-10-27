@@ -24,11 +24,8 @@ class Soca2 {
 
   static function ejecutarAccion() {
 
-
     $controller = NULL;
     $_SESSION['INICIA_TAREA'] = date('Y-m-d h:i:s');
-
-
     if(!empty($_POST['modulo'])) {
       $nombreModulo = strtolower($_POST['modulo']);
     } elseif(!empty($_GET['modulo'])) {
@@ -38,7 +35,6 @@ class Soca2 {
     } else {
       $nombreModulo = "sistema";
     }
-
     if(!empty($_POST['controlador'])) {
       $controlador = $_POST['controlador'];
     } elseif(!empty($_GET['controlador'])) {
@@ -49,8 +45,6 @@ class Soca2 {
       $controlador = "sistema";
     }
     $nombreControlador = $controlador . "Controlador";
-
-
     if(!empty($_POST['accion'])) {
       $nombreAccion = $_POST['accion'];
     } elseif(!empty($_GET['accion'])) {
@@ -60,8 +54,7 @@ class Soca2 {
     } else {
       $nombreAccion = "inicio";
     }
-
-    $controllerPath = PATH_COMPONENTES . $nombreModulo . DS . 'controladores' . DS . $controlador . '.php';
+    $controllerPath = PATH_COMPONENTES . $nombreModulo . DS . 'controladores' . DS . $controlador . EXT_CONTROLADORES;
     if(is_file($controllerPath)) {
       require_once $controllerPath;
     } else {

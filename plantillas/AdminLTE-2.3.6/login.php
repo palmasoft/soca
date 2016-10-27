@@ -35,11 +35,11 @@
 
         <form id="frm-login" method="post" onsubmit="return false;" >
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="correo">
+            <input type="email" class="form-control" name="txt_correo_usuario" placeholder="correo">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="clave">
+            <input type="password" class="form-control" name="txt_clave_usuario" placeholder="clave">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -52,6 +52,9 @@
             </div>
             <!-- /.col -->
           </div>
+          <input type="hidden" name="modulo" value="sistema" />
+          <input type="hidden" name="controlador" value="sesion" />
+          <input type="hidden" name="accion" value="validarUsuario" />
         </form>
 
       </div>
@@ -74,20 +77,20 @@
             });
 
             $("#frm-login").submit(function () {
-              $.post("controlador.php", $(this).serialize(), function (data) {
-                //alert(data);
-                var respuesta = JSON.parse(data);
-                $("#div-resp-login").removeClass('hinge');
-                $("#div-resp-login").html(respuesta.MENSAJE_RESPUESTA);
-                $("#div-resp-login").addClass('flash shake');
-                if (respuesta.TIPO_RESPUESTA == 'EXITO') {
-                  location = './';
-                } else {
-                  setTimeout(function () {
-                    $("#div-resp-login").removeClass('flash shake');
-                    $("#div-resp-login").addClass('hinge');
-                  }, 4321);
-                }
+              $.post("api.php", $(this).serialize(), function (data) {
+                alert(data);
+//                var respuesta = JSON.parse(data);
+//                $("#div-resp-login").removeClass('hinge');
+//                $("#div-resp-login").html(respuesta.MENSAJE_RESPUESTA);
+//                $("#div-resp-login").addClass('flash shake');
+//                if (respuesta.TIPO_RESPUESTA == 'EXITO') {
+//                  location = './';
+//                } else {
+//                  setTimeout(function () {
+//                    $("#div-resp-login").removeClass('flash shake');
+//                    $("#div-resp-login").addClass('hinge');
+//                  }, 4321);
+//                }
               });
             });
 

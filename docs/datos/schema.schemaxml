@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8" collation="utf8_general_ci">oneclass_soca2</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="usuarios" view="colnames">
+<left>381</left>
+<top>586</top>
+<width>157</width>
+<height>256</height>
+<sql_create_table>CREATE TABLE `usuarios` (
+  `usuarioId` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `usuarioCorreo` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `usuarioClave` text COLLATE utf8_spanish2_ci,
+  `usuarioUltimoIngreso` timestamp NULL DEFAULT NULL,
+  `usuarioUltimaIp` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `usuarioUltimaUbicacionLatitud` varchar(50) COLLATE utf8_spanish2_ci DEFAULT '11.227442290719976',
+  `usuarioUltimaUbicacionLongitud` varchar(50) COLLATE utf8_spanish2_ci DEFAULT '-74.196954430081',
+  `usuarioCreado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `usuarioCreo` bigint(20) DEFAULT NULL,
+  `usuarioEstado` enum('ACTIVO','DESACTIVO') COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'ACTIVO',
+  `usuarioAvatar` varchar(255) COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'archivos/oximeiser/avatares/default.png',
+  PRIMARY KEY (`usuarioId`),
+  UNIQUE KEY `UQ_Usuarios_usuarioId` (`usuarioId`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="empleados" view="colnames">
+<left>359</left>
+<top>283</top>
+<width>197</width>
+<height>265</height>
+<sql_create_table>CREATE TABLE `empleados` (
+  `empleadoId` int(11) NOT NULL AUTO_INCREMENT,
+  `empleadoSede` int(11) NOT NULL,
+  `empleadoTipo` int(11) NOT NULL,
+  `empleadoCargo` bigint(20) NOT NULL,
+  `empleadoDatosPersonales` int(11) NOT NULL,
+  `empleadoUsuario` int(11) NOT NULL,
+  `empleadoSalarioBase` varchar(50) COLLATE utf8_spanish2_ci DEFAULT '0',
+  `empleadoInicia` date DEFAULT NULL,
+  `empleadoTermina` date DEFAULT NULL,
+  `empleadoRegistrado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `empleadoDesactivado` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`empleadoId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="tiposcomision" view="colnames">
+<left>783</left>
+<top>192</top>
+<width>157</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `tiposcomision` (
+  `tipocomisionId` int(11) NOT NULL AUTO_INCREMENT,
+  `tipocomisionCodigo` varchar(50) NOT NULL,
+  `tipocomisionTitulo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`tipocomisionId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="tiposempleado" view="colnames">
+<left>365</left>
+<top>133</top>
+<width>163</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `tiposempleado` (
+  `tipoempleadoId` int(11) NOT NULL AUTO_INCREMENT,
+  `tipoempleadoCodigo` varchar(50) NOT NULL,
+  `tipoempleadoTitulo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`tipoempleadoId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="ComisionesCargos" view="colnames">
+<left>779</left>
+<top>36</top>
+<width>189</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `ComisionesCargos` (
+  `comisioncargoId` int(11) NOT NULL AUTO_INCREMENT,
+  `cargoId` int(11) NOT NULL,
+  `tipocomisionId` int(11) NOT NULL,
+  `comisioncargoPorcentaje` varchar(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`comisioncargoId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="cargosempleados" view="colnames">
+<left>573</left>
+<top>154</top>
+<width>174</width>
+<height>176</height>
+<sql_create_table>CREATE TABLE `cargosempleados` (
+  `cargoEmpleadoId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cargoEmpleadoCodigo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `cargoEmpleadoTitulo` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`cargoEmpleadoId`),
+  UNIQUE KEY `UQ_CargosEmpleados_cargoEmpleadoId` (`cargoEmpleadoId`),
+  UNIQUE KEY `UQ_CargosEmpleados_cargoEmpleadoCodigo` (`cargoEmpleadoCodigo`),
+  UNIQUE KEY `UQ_CargosEmpleados_cargoEmpleadoTitulo` (`cargoEmpleadoTitulo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="personas" view="colnames">
+<left>597</left>
+<top>348</top>
+<width>195</width>
+<height>506</height>
+<sql_create_table>CREATE TABLE `personas` (
+  `personaId` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `personaTipoIdentificacion` int(10) NOT NULL,
+  `personaIdentificacion` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `personaRazonSocial` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `personaNombreComercial` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `personaNombres` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `personaApellidos` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `personaProvincia` int(10) DEFAULT NULL,
+  `personaCanton` int(10) DEFAULT NULL,
+  `personaDireccion` text COLLATE utf8_spanish2_ci,
+  `personaTelefono` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `personaCelular` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `personaCorreoElectronico` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `personaLatitud` varchar(50) COLLATE utf8_spanish2_ci DEFAULT '11.2272989',
+  `personaLongitud` varchar(50) COLLATE utf8_spanish2_ci DEFAULT '-74.1967533',
+  `personaObservaciones` text COLLATE utf8_spanish2_ci,
+  `personaLogo` varchar(255) COLLATE utf8_spanish2_ci DEFAULT '/archivos/img/fotos.png',
+  `personaFotoReferencia` varchar(255) COLLATE utf8_spanish2_ci DEFAULT '/archivos/img/fotos.png',
+  `personaFirmaEscaneada` varchar(255) COLLATE utf8_spanish2_ci DEFAULT '/archivos/img/firma.png',
+  `personaFechaCreado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `personaUsuarioCrea` bigint(20) NOT NULL,
+  `personaFechaModificado` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `personaUsuarioModifica` bigint(20) DEFAULT NULL,
+  `personaFechaBorrado` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `personaUsuarioBorra` bigint(20) DEFAULT NULL,
+  `personaEstado` enum('ACTIVO','BORRADO') COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'ACTIVO',
+  PRIMARY KEY (`personaId`),
+  UNIQUE KEY `UQ_personas_personaId` (`personaId`),
+  UNIQUE KEY `UQ_personas_personaIdentificacion` (`personaIdentificacion`),
+  KEY `IXFK_personas_TipoIdentificacion` (`personaTipoIdentificacion`),
+  KEY `IXFK_personas_UsuarioCrea` (`personaUsuarioCrea`),
+  KEY `IXFK_personas_UsuarioModifica` (`personaUsuarioModifica`),
+  KEY `IXFK_personas_UsuarioBorra` (`personaUsuarioBorra`)
+) ENGINE=InnoDB AUTO_INCREMENT=898 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="sedes" view="colnames">
+<left>197</left>
+<top>282</top>
+<width>126</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `sedes` (
+  `sedeId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sedeCodigo` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `sedeNombre` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `sedeDireccion` text CHARACTER SET utf8,
+  `sedeColor` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  PRIMARY KEY (`sedeId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="funciones" view="colnames">
+<left>210</left>
+<top>591</top>
+<width>132</width>
+<height>231</height>
+<sql_create_table>CREATE TABLE `funciones` (
+  `funcionId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `funcionCodigo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `funcionTitulo` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `funcionModulo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'sistema',
+  `funcionControlador` varchar(50) COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'informacion',
+  `funcionFuncion` varchar(50) COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'mostrarInformacion',
+  `funcionMenu` enum('SI','NO') COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'SI',
+  `funcionMenuPadre` int(11) NOT NULL DEFAULT '0',
+  `funcionOrden` int(11) NOT NULL DEFAULT '99',
+  `funcionIcono` varchar(50) COLLATE utf8_spanish2_ci DEFAULT 'fa fa-box',
+  PRIMARY KEY (`funcionId`),
+  UNIQUE KEY `UQ_FuncionesSistema_funcionId` (`funcionId`),
+  UNIQUE KEY `UQ_FuncionesSistema_funcionCodigo` (`funcionCodigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="usuariosfunciones" view="colnames">
+<left>284</left>
+<top>863</top>
+<width>183</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `usuariosfunciones` (
+  `usuarioFuncionId` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `usuarioFuncion` bigint(20) NOT NULL COMMENT 'EL usuario al que se le asigna la funcion usuarioFuncionAsignada',
+  `usuarioFuncionAsignada` int(10) NOT NULL COMMENT 'funcion que se le asigna a usuarioFuncion',
+  `usuarioFuncionAsignado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `usuarioFuncionAsigna` bigint(20) NOT NULL,
+  PRIMARY KEY (`usuarioFuncionId`),
+  UNIQUE KEY `UQ_UsuariosFunciones_usuarioFuncionId` (`usuarioFuncionId`),
+  KEY `IXFK_UsuariosFunciones_Usuarios` (`usuarioFuncion`),
+  KEY `IXFK_UsuariosFunciones_FuncionesSistema` (`usuarioFuncionAsignada`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="modulos" view="colnames">
+<left>95</left>
+<top>837</top>
+<width>156</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `modulos` (
+  `moduloId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `moduloCodigo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `moduloTitulo` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `moduloIcono` varchar(50) COLLATE utf8_spanish2_ci DEFAULT 'fa fa-dashboard',
+  PRIMARY KEY (`moduloId`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="cantones" view="colnames">
+<left>807</left>
+<top>642</top>
+<width>136</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `cantones` (
+  `cantonId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cantonProvincia` int(10) NOT NULL,
+  `cantonCodigo` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `cantonNombre` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  PRIMARY KEY (`cantonId`)
+) ENGINE=MyISAM AUTO_INCREMENT=222 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="provincias" view="colnames">
+<left>810</left>
+<top>509</top>
+<width>143</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `provincias` (
+  `provinciaId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `provinciaCodigo` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `provinciaNombre` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  PRIMARY KEY (`provinciaId`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="tiposidentificacion" view="colnames">
+<left>815</left>
+<top>350</top>
+<width>183</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `tiposidentificacion` (
+  `tipoIdentificacionId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tipoIdentificacionCodigo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `tipoIdentificacionTitulo` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
+  `tipoIdentificacionEstado` enum('ACTIVO','INACTIVO') COLLATE utf8_spanish2_ci NOT NULL DEFAULT 'ACTIVO',
+  PRIMARY KEY (`tipoIdentificacionId`),
+  UNIQUE KEY `UQ_TipoIdentificacion_tipoIdentificacionId` (`tipoIdentificacionId`),
+  UNIQUE KEY `UQ_TipoIdentificacion_tipoIdentificacionCodigo` (`tipoIdentificacionCodigo`),
+  UNIQUE KEY `UQ_TipoIdentificacion_tipoIdentificacionTItulo` (`tipoIdentificacionTitulo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

@@ -30,10 +30,10 @@ class Modelos {
   public static function prepararConsulta($query) {
     $consulta = null;
     try {
-      $consulta = self::$dbSistema->prepare($query);
+      $consulta = self::$db->prepare($query);
       if(!$consulta) {
         echo "\nInformacion del Error :\n";
-        print_r(self::$dbSistema->errorInfo());
+        print_r(self::$db->errorInfo());
         return null;
       }
     } catch(PDOException $e) {
@@ -76,7 +76,7 @@ class Modelos {
     if($consulta != null) {
       try {
         $consulta->execute($datos);
-        $result = self::$dbSistema->lastInsertId();
+        $result = self::$db->lastInsertId();
       } catch(Exception $exc) {
         Consola::imprimir("\r\n");
         Consola::imprimir("\r\n");
@@ -123,7 +123,7 @@ class Modelos {
   }
 
   public static function cargar($nombreModelo) {
-    $ruta = PATH_MODELOS . strtolower($nombreModelo) . "." . EXT_MODELOS . ".php";
+    $ruta = PATH_MODELOS . strtolower($nombreModelo) . EXT_MODELOS;
     if(file_exists($ruta)) {
       include_once $ruta;
     }
@@ -149,7 +149,7 @@ class Modelos {
 
   public static function _consulta($query, $datos = NULL) {
     $result = NULL;
-    $result = self::$dbSistema->qrySistema($query, $datos);
+    $result = self::$db->qrySistema($query, $datos);
     return $result;
   }
 
@@ -177,15 +177,15 @@ class Modelos {
 
   public static function _crearUltimoId($query, $datos = NULL) {
     $idUltimoCreado = '0';
-    if(self::$dbSistema->updSistema($query, $datos)) {
-      $idUltimoCreado = self::$dbSistema->lastInsertId();
+    if(self::$db->updSistema($query, $datos)) {
+      $idUltimoCreado = self::$db->lastInsertId();
     }
 
     return $idUltimoCreado;
   }
 
   public static function _modificarRegistros($query, $datos = NULL) {
-    echo self::$dbSistema->updSistema($query, $datos);
+    echo self::$db->updSistema($query, $datos);
     echo "<br />";
   }
 
@@ -201,7 +201,7 @@ class Modelos {
         }
       }
 
-      print_r(self::$dbSistema);
+      print_r(self::$db);
 
 
       if($consulta->execute()) {
