@@ -74,16 +74,16 @@ class Plantillas extends Base {
     //echo Plantillas::$ruta_tmpl_admin."<br />";
     //self::encabezado();
     //self::min_css();
-    Modelos::cargar('Sistema' . DS . 'Componentes');
-    Modelos::cargar('Sistema' . DS . 'Usuarios');
+    Modelos::cargar('Datos' . DS . 'Sistema' . DS . 'Modulos');
+    Modelos::cargar('Datos' . DS . 'Sistema' . DS . 'Usuarios');
     $User = Usuarios::datos_del_usuario(Usuario::idUsuario());
 
     if($User->usuarioId == '0') {
-      $User->componentes = Componentes::todos_con_permisos();
+      $User->modulos = Modulos::todos_con_permisos();
     } else {
-      $User->componentes = Componentes::asignados_con_permisos(Usuario::idUsuario());
+      $User->modulos = Modulos::asignados_con_permisos(Usuario::idUsuario());
     }
-    Config::set('OXYMED_USR', $User);
+    Sesion::set('OBJ_USR', $User);
 
     if(file_exists(Plantillas::$ruta)) {
       if(is_file(Plantillas::$ruta_tmpl_admin)) {
@@ -185,10 +185,10 @@ static
   static
    function js_modulos() {
     $strSricpts = '';
-    $componentes = Archivos::listar_directorios_nombre(PATH_COMPONENTES);
-    foreach($componentes as $directorio) {
+    $modulos = Archivos::listar_directorios_nombre(PATH_COMPONENTES);
+    foreach($modulos as $directorio) {
       $dirScript = PATH_COMPONENTES . $directorio . DS . "funciones" . DS;
-      $pathScript = "componentes/" . $directorio . "/funciones/";
+      $pathScript = "modulos/" . $directorio . "/funciones/";
       $archivos = Archivos::listar_archivos_directorio($dirScript, 'js');
       if(!is_null($archivos)) {
         foreach($archivos as $key => $value) {
@@ -335,8 +335,8 @@ static
 
   function cargar_scripts_modulos($value = '') {
     foreach($_SESSION['SESION_MODULOS_ACTIVOS'] as $key => $value) {
-      $dirScript = "componentes" . DS . $value->NOMBRE_MODULO . DS . "funciones" . DS;
-      $pathScript = "componentes/" . $value->NOMBRE_MODULO . "/funciones/";
+      $dirScript = "modulos" . DS . $value->NOMBRE_MODULO . DS . "funciones" . DS;
+      $pathScript = "modulos/" . $value->NOMBRE_MODULO . "/funciones/";
       $archivos = Archivos::listar_archivos_directorio(PATH_BASE . $dirScript, 'js');
       if(!is_null($archivos))
           foreach($archivos as $key => $value) {
@@ -348,8 +348,8 @@ static
   function cargar_estilos_modulos($value = '') {
 
     foreach($_SESSION['SESION_MODULOS_ACTIVOS'] as $key => $modulo) {
-      $dirEstilo = "componentes" . DS . $modulo->NOMBRE_MODULO . DS . "estilos" . DS;
-      $pathEstilo = "componentes/" . $modulo->NOMBRE_MODULO . "/estilos/";
+      $dirEstilo = "modulos" . DS . $modulo->NOMBRE_MODULO . DS . "estilos" . DS;
+      $pathEstilo = "modulos/" . $modulo->NOMBRE_MODULO . "/estilos/";
       $archivos = Archivos::listar_archivos_directorio(PATH_BASE . $dirEstilo, 'css');
       if(!is_null($archivos))
           foreach($archivos as $key => $value) {

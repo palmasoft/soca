@@ -1,6 +1,6 @@
 <?php
-Modelos::cargar('sistema' . DS . 'Permisos');
-Modelos::cargar('sistema' . DS . 'PermisosUsuarios');
+Modelos::cargar('Datos' . DS . 'sistema' . DS . 'Permisos');
+Modelos::cargar('Datos' . DS . 'sistema' . DS . 'PermisosUsuarios');
 /**
  * @author Puro Ingenio Samario
  * @version 1.0
@@ -92,8 +92,7 @@ sqlDelUsuario;
     $resultado = PermisosUsuarios::modulos_asignados($idUsuario);
     if(count($resultado) > 0) {
       foreach($resultado as $indice => $comp) {
-        $resultado[$indice]->permisos = PermisosUsuarios::permisos_asignados_por_modulo($idUsuario,
-          $comp->moduloId);
+        $resultado[$indice]->permisos = PermisosUsuarios::permisos_asignados_por_modulo($idUsuario, $comp->moduloId);
       }
       return $resultado;
     }

@@ -17,6 +17,8 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="plantillas/AdminLTE-2.3.6/plugins/iCheck/square/blue.css">
 
+    <!--Animaciones-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -79,18 +81,18 @@
             $("#frm-login").submit(function () {
               $.post("api.php", $(this).serialize(), function (data) {
                 alert(data);
-//                var respuesta = JSON.parse(data);
-//                $("#div-resp-login").removeClass('hinge');
-//                $("#div-resp-login").html(respuesta.MENSAJE_RESPUESTA);
-//                $("#div-resp-login").addClass('flash shake');
-//                if (respuesta.TIPO_RESPUESTA == 'EXITO') {
-//                  location = './';
-//                } else {
-//                  setTimeout(function () {
-//                    $("#div-resp-login").removeClass('flash shake');
-//                    $("#div-resp-login").addClass('hinge');
-//                  }, 4321);
-//                }
+                var respuesta = JSON.parse(data);
+                $("#div-resp-login").removeClass('hinge');
+                $("#div-resp-login").html(respuesta.MENSAJE_RESPUESTA);
+                $("#div-resp-login").addClass('flash shake');
+                if (respuesta.TIPO_RESPUESTA == 'EXITO') {
+                  location = './';
+                } else {
+                  setTimeout(function () {
+                    $("#div-resp-login").removeClass('flash shake');
+                    $("#div-resp-login").addClass('hinge');
+                  }, 4321);
+                }
               });
             });
 

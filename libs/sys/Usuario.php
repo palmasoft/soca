@@ -9,6 +9,7 @@
  *
  * @author Puro Ingenio Samario
  */
+Modelos::cargar('Datos' . DS . 'Sistema' . DS . 'Sesion');
 class Usuario extends Modelos {
 
   public static function fecha_hora_sistema() {
@@ -36,7 +37,7 @@ class Usuario extends Modelos {
 
   public static function nombreUsuario() {
     if(isset($_SESSION['OBJ_USR'])) {
-      return $_SESSION['OBJ_USR']->usuarioNombre;
+      return $_SESSION['OBJ_USR']->usuarioCorreo;
     }
     return "";
   }

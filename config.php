@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 setlocale(LC_ALL, "es_ES@euro", "es_ES", "esp");
