@@ -33,13 +33,15 @@ class sesionControlador extends Controladores {
         );
       }
     }
+
     if($iniciar) {
       Consola::imprimir("iniciando sesion.....\n\r");
       $User = Usuarios::datos_del_usuario($Usr->usuarioId);
       if($Usr->usuarioId == 0) {
         $User->modulos = Modulos::todos_con_permisos();
       } else {
-        $User->modulos = Modulos::DelUsuarioConPermisos($Usr->usuarioId);
+        $rModulos = Modulos::DelUsuarioConPermisos($Usr->usuarioId);
+        $User->modulos = is_null($rModulos) ? array() : $rModulos;
       }
       Sesion::set('OBJ_USR', $User);
       Usuarios::actualizar_fechavisita($User->usuarioId);
@@ -86,7 +88,7 @@ class sesionControlador extends Controladores {
      "EXITO",
      "<div class=\"text-center\" >Se ha CERRADO correctamente tu sesion de trabajo. <br /> <i class=\"fa fa-refresh fa-spin\" style=\"font-size: 200%;\" ></i> <br />Espera mientras cerramos el sistema.</div>"
     );
-    Visitante::cerrar_sesion();
+    Usuario::cerrar_sesion();
   }
 
   function estaActivaSesion() {

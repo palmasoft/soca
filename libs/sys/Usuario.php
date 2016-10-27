@@ -65,6 +65,20 @@ class Usuario extends Modelos {
     return $_SESSION['mensajesSistema'] = "";
   }
 
+  public static function cargoEmpleado() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->cargoEmpleadoTitulo;
+    }
+    return "";
+  }
+
+  public static function fechaInicioEmpleado() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->empleadoInicia;
+    }
+    return "";
+  }
+
   public static function nombreCompletoUsuario() {
     if(isset($_SESSION['OBJ_USR'])) {
       return $_SESSION['OBJ_USR']->personaNombres . " " . $_SESSION['OBJ_USR']->personaApellidos;

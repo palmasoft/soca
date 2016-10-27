@@ -1,12 +1,10 @@
 <?php
-
 /**
  * @author Puro Ingenio Samario
  * @version 1.0
  * @created 25-mar.-2015 11:22:18 a. m.
  */
 class PermisosUsuarios extends Modelos {
-
   private static
    $id_permiso;
   private static
@@ -16,12 +14,11 @@ class PermisosUsuarios extends Modelos {
   private static
    $icono_permiso = 'fa fa-cubes';
   private static
-   $componente_permiso = 'sistema';
+   $modulo_permiso = 'sistema';
   private static
    $controlador_permiso = 'sistema';
   private static
    $accion_permiso = 'info';
-
   /**
    * Puede ser <b>SI </b>para mostrarce en el emnu principal del sistema, o <b>NO
    * </b>para evitar mostrarce
@@ -29,7 +26,7 @@ class PermisosUsuarios extends Modelos {
   private static
    $menu_permiso = 'SI';
   private static
-   $UQ_Componentes_codigo_componente;
+   $UQ_Modulos_codigo_modulo;
   private static
    $nTabla = "usuariosfunciones";
   private static
@@ -54,7 +51,7 @@ sqlBase;
   private static
    $sqlCompleta = <<<EOD
         SELECT 
-  componentes.*
+  modulos.*
   , funciones.*
   , usuariosfunciones.*
   , usuarios.*
@@ -78,24 +75,24 @@ FROM
     ON (
       usuarios.usuarioCargo = cargosempleados.cargoEmpleadoId
     ) 
-  INNER JOIN componentes 
+  INNER JOIN modulos 
     ON (
-      funciones.funcionModulo = componentes.componenteCodigo
+      funciones.funcionModulo = modulos.moduloCodigo
     )    
 EOD;
   private static
-   $sqlComponentesUsuario = <<<EOD
-        SELECT   componentes.*        FROM   usuariosfunciones         
+   $sqlModulosUsuario = <<<EOD
+        SELECT   modulos.*        FROM   usuariosfunciones         
         LEFT JOIN     funciones ON (usuariosfunciones.usuarioFuncionAsignada = funciones.funcionId)        
-        LEFT JOIN    componentes ON ( funciones.funcionModulo = componentes.componenteCodigo)        
-        WHERE usuariosfunciones.usuarioFuncion= ? GROUP BY componentes.componenteId 
+        LEFT JOIN    modulos ON ( funciones.funcionModulo = modulos.moduloCodigo)        
+        WHERE usuariosfunciones.usuarioFuncion= ? GROUP BY modulos.moduloId 
 EOD;
   private static
-   $sqlPermisosComponente = <<<EOD
+   $sqlPermisosModulo = <<<EOD
         SELECT   funciones.* FROM   usuariosfunciones  
         LEFT JOIN     funciones ON (usuariosfunciones.usuarioFuncionAsignada = funciones.funcionId)   
-        LEFT JOIN    componentes ON ( funciones.funcionModulo = componentes.componenteCodigo)   
-        WHERE componentes.componenteId = ? AND usuariosfunciones.usuarioFuncion = ?    GROUP BY funciones.funcionOrden  
+        LEFT JOIN    modulos ON ( funciones.funcionModulo = modulos.moduloCodigo)   
+        WHERE modulos.moduloId = ? AND usuariosfunciones.usuarioFuncion = ?    GROUP BY funciones.funcionOrden  
 EOD;
 
   /**
@@ -128,9 +125,9 @@ EOD;
   }
 
   static public
-   function componentes_asignados($usuario_permiso) {
+   function modulos_asignados($usuario_permiso) {
     self::$campos = array();
-    $query = self::$sqlComponentesUsuario . " ";
+    $query = self::$sqlModulosUsuario . " ";
     array_push(self::$campos, $usuario_permiso);
     $resultado = self::consulta($query, self::$campos);
     if(count($resultado) > 0) {
@@ -140,10 +137,10 @@ EOD;
   }
 
   static public
-   function permisos_asignados_por_componente($usuario_permiso, $id_componente) {
+   function permisos_asignados_por_modulo($usuario_permiso, $id_modulo) {
     self::$campos = array();
-    $query = self::$sqlPermisosComponente . "";
-    array_push(self::$campos, $id_componente);
+    $query = self::$sqlPermisosModulo . "";
+    array_push(self::$campos, $id_modulo);
     array_push(self::$campos, $usuario_permiso);
     $resultado = self::consulta($query, self::$campos);
     if(count($resultado) > 0) {

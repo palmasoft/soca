@@ -31,7 +31,7 @@ FROM
     INNER JOIN personas 
         ON (empleados.empleadoDatosPersonales = personas.personaId)
     INNER JOIN tiposidentificacion 
-        ON (personas.personaTipoIdentificacion = tiposidentificacion.tipoIdentificacionId)
+        ON (personas.personaTipoIdentificacion = tiposidentificacion.tipoIdentificacionId) 
 EOD;
   
   private static
