@@ -1,12 +1,10 @@
 <?php
-
 /**
  * @author Puro Ingenio Samario
  * @version 1.0
  * @created 25-mar.-2015 11:22:18 a. m.
  */
 class Permisos extends Modelos {
-
   /**
    * Puede ser <b>SI </b>para mostrarce en el emnu principal del sistema, o <b>NO
    * </b>para evitar mostrarce
@@ -68,7 +66,8 @@ sqlDelUsuario;
    */
   static public
    function todos() {
-    $query = self::$sqlBase . " ORDER BY  " . self::$nTabla . ".funcionOrden  ";
+    $query = self::$sqlBase . " "
+     . "ORDER BY  " . self::$nTabla . ".funcionOrden  ";
     $resultado = self::consulta($query);
     if(count($resultado) > 0) {
       return $resultado;
@@ -78,7 +77,9 @@ sqlDelUsuario;
 
   static public
    function todos_menu() {
-    $query = self::$sqlBase . " WHERE " . self::$nTabla . ".funcionMenu = 'SI'   ORDER BY  " . self::$nTabla . ".funcionModulo ,  " . self::$nTabla . ".funcionOrden  ";
+    $query = self::$sqlBase . " "
+     . "WHERE " . self::$nTabla . ".funcionMenu = 'SI'   "
+     . "ORDER BY  " . self::$nTabla . ".funcionModulo ,  " . self::$nTabla . ".funcionOrden  ";
     $resultado = self::consulta($query);
     if(count($resultado) > 0) {
       return $resultado;
@@ -96,7 +97,9 @@ sqlDelUsuario;
   static public
    function todos_del_modulo($cod_modulo) {
     self::$campos = array();
-    $query = self::$sqlBase . " WHERE " . self::$nTabla . ".funcionModulo = ? AND " . self::$nTabla . ".funcionMenu = 'SI'   ORDER BY  " . self::$nTabla . ".funcionOrden  ";
+    $query = self::$sqlBase . " "
+     . "WHERE " . self::$nTabla . ".funcionModulo = ? AND " . self::$nTabla . ".funcionMenu = 'SI'   "
+     . "ORDER BY  " . self::$nTabla . ".funcionOrden  ";
     array_push(self::$campos, $cod_modulo);
     $resultado = self::consulta($query, self::$campos);
     if(count($resultado) > 0) {

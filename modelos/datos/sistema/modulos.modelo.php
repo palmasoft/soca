@@ -63,7 +63,8 @@ sqlDelUsuario;
    function DelUsuarioConPermisos($idUsuario) {
     $query = self::$sqlDelUsuario . "  "
      . "WHERE  usuariosfunciones.usuarioFuncion = " . $idUsuario . " "
-     . "GROUP BY modulos.moduloId "; //. " ORDER BY id_modulo ASC";
+     . "GROUP BY modulos.moduloId "
+     . "ORDER BY modulos.moduloOrden ASC";
     $resultado = self::consulta($query);
     if(count($resultado) > 0) {
       foreach($resultado as $indice => $comp) {
@@ -76,7 +77,8 @@ sqlDelUsuario;
 
   static public
    function todos_con_permisos() {
-    $query = self::$sqlBase; //. " ORDER BY id_modulo ASC";
+    $query = self::$sqlBase . "ORDER BY modulos.moduloOrden ASC";
+    ; //. " ORDER BY id_modulo ASC";
     $resultado = self::consulta($query);
     if(count($resultado) > 0) {
       foreach($resultado as $indice => $comp) {

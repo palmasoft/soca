@@ -91,7 +91,7 @@ class sesionControlador extends Controladores {
     Usuario::cerrar_sesion();
   }
 
-  function estaActivaSesion() {
+  function estaActiva() {
     if(isset($_SESSION['SINAP_USR'])) {
       echo json_encode(array("respuesta" => $_SESSION['SINAP_USR']->usuarioNombre));
     }
@@ -100,5 +100,5 @@ class sesionControlador extends Controladores {
   function registrarUltimaUbicacion() {
     Usuarios::actualizar_ultima_ubicacion(Visitante::idUsuario(), self::$datos['latitud'], self::$datos['longitud']);
   }
-
+ 
 }
