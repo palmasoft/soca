@@ -3,18 +3,18 @@ var _arreglo_temporizadores = {
   recarga_estadisticas: null, contador_recarga: null
 };
 
-function inciar_plugins_sistema() {
+function iniciarPluginsSistema() {
   $("form").submit(function (evt) {
     evt.preventDefault();
   });
-
-  $('.mayusculas').on("keyup", function (event) {
+  $('.mayusculas').on("keyup", function (evt) {
+    evt.preventDefault();
     $(this)[0].value = convertirAMayusculas($(this)[0].value);
   });
 
 }
 
-function mostrar_contenidos(modulo, controlador, accion, datos) {
+function mostrarContenidos(modulo, controlador, accion, datos) {
   if (!_puede_salir_formulario) {
     confirm(
       '<strong>¿Seguro que desea salir sin guardar los datos del formulario?</strong> ' +
@@ -37,13 +37,11 @@ function ejecutarAccionMuestraAreaTrabajo(modulo, controlador, accion, datos) {
   bloqueoCargando();
   ajax("&componente=" + modulo + "&accion=" + accion + "&controlador=" + controlador + "&" + datos,
     function (respHTML) {
-      actualizar_area_contenido(respHTML);
-      ir_arriba();
+      actualizarAreaContenido(respHTML);
       desbloqueoCargando();
-      inciar_plugins_sistema();
-//            inciar_plugins_plantilla();
+      iniciarPluginsSistema();
+      irArriba();
     }
-
   );
 }
 
@@ -106,7 +104,7 @@ function ajax(datos, script) {
   posting.done(function (data) {
     script(data);
 //    asignarControlAccion();
-    inciar_plugins_sistema();
+    iniciarPluginsSistema();
 //    inciar_plugins_plantilla();
     //ir_arriba();
   });
@@ -158,10 +156,10 @@ function ajaxEsperar(datos, script) {
   });
   objAjaxPost = posting;
 }
-function abortar_ajax() {
+function abortarAjax() {
   objAjaxPost.abort();
 }
-function validar_resultado_html(htmlMsg, funcExito, funcError) {
+function validarResultadoHTML(htmlMsg, funcExito, funcError) {
 
   var resp = htmlMsg.split("@pis_");
   //if (!$.isEmptyObject(resp)) {
@@ -242,7 +240,7 @@ function jsonEsperar(datos, script) {
   });
   objAjaxPost = posting;
 }
-function validar_resultado_json(resp, funcExito, funcError) {
+function validarResultadoJSON(resp, funcExito, funcError) {
 //if (!$.isEmptyObject(resp)) {
   switch (resp.resultado) {
     case 'ERROR':
@@ -274,22 +272,30 @@ function accionBackground(modulo, controlador, accion, datos, script) {
 }
 function esActivaSesion() {
   ejecutarAccionJsonSinBloqueo(
-    'sistema', 'sesion', 'esta_activa_sesion', '',
+    'sistema', 'sesion', 'estaActiva', '',
     function (data) {
       if (estaVacio(data.respuesta)) {
-        salir_sistema();
+        salirSistema();
       }
     }
   );
 }
-function consulta_mensajes_para_usuarios() {
+function consultaMensajesUsuarios() {
   accionBackground(
-    'sistema', 'sesion', 'mensajes_usuario_activo', '',
-    'mostrar_resultado_guardar(data);'
+    'sistema', 'sesion', 'mensajesUsuarioActivo', '',
+    'mostrarResultadoGuardar(data);'
     );
 }
 
 
+
+
+function actualizarAreaContenido(data) {
+  $('#div-areaTrabajo').html(data);
+}
+function irArriba() {
+  $('html, body').animate({scrollTop: 0}, 179);
+}
 function zIndex() {
   var allElems = document.getElementsByTagName ? document.getElementsByTagName("*") : document.all; // or test for that too
   var maxZIndex = 0;
@@ -318,7 +324,7 @@ function zIndex() {
 var htmlMiniCargando = '<div id="miniCargando" style="<i class="fa fa-cog"></i></div>';
 var tMiniCargando = 0;
 var timerMiniCargando = null;
-function cargando_dentro_objeto(enDonde) {
+function cargandoDentroObjeto(enDonde) {
   $("#" + enDonde).prepend(htmlMiniCargando);
   $("#" + enDonde + " #miniCargando").fadeIn(1500);
   tMiniCargando = 0;
@@ -334,7 +340,7 @@ function cargando_dentro_objeto(enDonde) {
     tMiniCargando++;
   }, 1000);
 }
-function quitar_cargando_dentro_objeto(enDonde) {
+function quitarCargandoDentroObjeto(enDonde) {
   $("#" + enDonde + " #miniCargando").fadeOut(1500);
   clearInterval(timerMiniCargando);
 }
@@ -342,55 +348,44 @@ function quitar_cargando_dentro_objeto(enDonde) {
 var seg = 0;
 var relojCargando;
 function bloqueoCargando() {
-  var cargando = '<div id="fondoCargando"  style=" z-index:ZINDEXMASALTO; position:fixed; top:0; left:0; width:110%; height:110%; background-color:transparent; background-position:center center; background-repeat:repeat; overflow:hidden;" ></div>' +
+  var cargando = '<div id="fondoCargando"  style=" z-index:ZINDEXMASALTO; position:fixed; top:0; left:0; width:110%; height:110%; background-color:rgba(0,0,0,0.45); background-position:center center; background-repeat:repeat; overflow:hidden;" ></div>' +
     '<div style=" z-index:ZINDEXMASALTO; position:fixed; top:0; left:0px; width:110%; height:110%; background-color:transparent; background-position:center center; background-repeat:repeat; overflow:hidden;" >' +
     '<div style="margin: 1% auto; text-align: center;">' +
     '<div class="col-middle">' +
     '<div class="text-center text-center">' +
-    '<img src="archivos/oximeiser/logos/logo_oximed.png" style="max-width: 100%; width: 210px;" />' +
+    '<img src="media/logos/logo-web.png" class="animated flip infinite" style="margin: auto; max-width: 100%; width: 210px;" />' +
     '<h1 class="texto-cargando">CARGANDO</h1>' +
-    '<h2>espera mientras terminamos la operaciÃ³n.</h2>' +
-    '<p>Si esta operacion se esta demorando mucho, por favor <a href="http://puroingeniosamario.com.co/">reportalo aquÃ­</a> </p>' +
-    '<div class="mid_center">' +
-    '<div id="reloj_operacion" class="col-xs-12 form-group pull-right top_search text-center">' +
+    '<h2>espera mientras terminamos la operaci&oacute;n.</h2>' +
+    '<p>Si esta operaci&oacute;n se esta demorando mucho, por favor <a href="http://puroingeniosamario.com.co/">reportalo aqu&iacute;</a> </p>' +
     '</div>' +
     '</div>' +
     '</div>' +
-    '</div>' +
-    '</div>' +
-    '<script> ' +
-    ' seg = 0; relojCargando = setInterval( function(){ ' +
-    ' seg++; $("#reloj_operacion").html( seg + "Seg"); ' +
-    ' ' +
-    '} , 1111 ); ' +
-    '</script>' +
     '</div>' +
     '';
   var posicion = zIndex();
   cargandoHtml = cargando.replace('ZINDEXMASALTO', posicion);
   cargandoHtml = cargandoHtml.replace('ZINDEXMASALTO', posicion + 1);
+  $('#cargando').show();
   $('#cargando').html(cargandoHtml);
 }
 function desbloqueoCargando() {
   seg = 0;
-  clearInterval(relojCargando);
+  $('#cargando').fadeOut();
   $('#cargando').html('');
+  clearInterval(relojCargando);
 }
-bloqueoCargando();
-$(document).ready(function () {
-  desbloqueoCargando();
-});
-
 function bloquearEscritorio() {
   var hg = screen.height;
   var wd = calculaAncho();
   $("#zona-modal").append("<div id='divFondoBloquearEscritorio' class='cssFondoBloquearEscritorio' style='width:" + wd + "px;height:" + hg + "px;background-color:black;opacity:0.4;filter:alpha(opacity=40);position:absolute;top:0;left:0;z-index:" + zIndex() + ";' ></div>");
 }
-
 function desBloquearEscritorio() {
-
   $("#divFondoBloquearEscritorio").remove();
 }
 
 
 
+bloqueoCargando();
+$(document).ready(function () {
+  setTimeout(desbloqueoCargando, 1234);
+});

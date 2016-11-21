@@ -1,10 +1,10 @@
 <header class="main-header">
   <!-- Logo -->
-  <a href="plantillas/AdminLTE-2.3.6/index2.html" class="logo">
+  <a href="javascript:void(0);" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><b>A</b>LT</span>
+    <span class="logo-mini"><b>S</b>CA</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><b>Admin</b>LTE</span>
+    <span class="logo-lg"><b>S.O.C.A.</b>Viajes</span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top">
@@ -109,8 +109,7 @@
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <img src="media/logos/logo-web.png" class="img-circle" alt="User Image">
-
+              <img src="<?php echo Usuario::avatarUsuario() ?>" class="img-circle" alt="User Image">
               <p>
                 <?php echo Usuario::nombreCompletoUsuario() ?> - <?php echo Usuario::cargoEmpleado() ?>
                 <small>desde <?php echo Usuario::fechaInicioEmpleado() ?></small>

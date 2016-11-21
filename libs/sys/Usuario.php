@@ -271,7 +271,7 @@ class Usuario extends Modelos {
 
   public static function menu() {
     if(isset($_SESSION['OBJ_USR'])) {
-      return $_SESSION['OBJ_USR']->componentes;
+      return $_SESSION['OBJ_USR']->modulos;
     }
     return "";
   }
