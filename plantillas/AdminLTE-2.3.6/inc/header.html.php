@@ -117,7 +117,7 @@
             </li>
             <!-- Menu Body -->
             <li class="user-body">
-              <div class="row">
+<!--              <div class="row">
                 <div class="col-xs-4 text-center">
                   <a href="#">Followers</a>
                 </div>
@@ -127,13 +127,16 @@
                 <div class="col-xs-4 text-center">
                   <a href="#">Friends</a>
                 </div>
-              </div>
+              </div>-->
               <!-- /.row -->
             </li>
             <!-- Menu Footer-->
             <li class="user-footer">
               <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Mi Perfil</a>
+                <a href="javascript:void(0)" class="btn btn-default btn-flat menu-funcion" 
+                   data-modulo="sistema" 
+                   data-controlador="usuarios" 
+                   data-tarea="mostrarPerfil" >Mi Perfil</a>
               </div>
               <div class="pull-right">
                 <a href="javascript:void(0);" onclick="cerrarSesion()" class="btn btn-default btn-flat">Salir</a>

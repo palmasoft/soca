@@ -65,6 +65,13 @@ class Usuario extends Modelos {
     return $_SESSION['mensajesSistema'] = "";
   }
 
+  public static function tipoEmpleado() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->tipoempleadoTitulo;
+    }
+    return "";
+  }
+
   public static function cargoEmpleado() {
     if(isset($_SESSION['OBJ_USR'])) {
       return $_SESSION['OBJ_USR']->cargoEmpleadoTitulo;
@@ -131,6 +138,48 @@ class Usuario extends Modelos {
   public static function telefonoUsuario() {
     if(isset($_SESSION['OBJ_USR'])) {
       return $_SESSION['OBJ_USR']->personaTelefono;
+    }
+    return "";
+  }
+
+  public static function direccionUsuario() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->personaDireccion;
+    }
+    return "";
+  }
+
+  public static function provinciaUsuario() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->provinciaNombre;
+    }
+    return "";
+  }
+
+  public static function cantonUsuario() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->cantonNombre;
+    }
+    return "";
+  }
+
+  public static function observacionesUsuario() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->personaObservaciones;
+    }
+    return "";
+  }
+
+  public static function formacionEmpleado() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->empleadoFormacion;
+    }
+    return "";
+  }
+
+  public static function salarioEmpleado() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->empleadoSalarioBase;
     }
     return "";
   }

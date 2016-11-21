@@ -14,6 +14,13 @@
 class Textos {
 
   static
+   function dinero($valor) {
+    return "$".  number_format($valor,1,',','.');
+  }
+
+  
+  
+  static
    function paraCorreos($texto) {
     return utf8_decode($texto);
   }

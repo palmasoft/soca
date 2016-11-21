@@ -42,6 +42,15 @@ class Sesion {
   }
 
   public static
+   function mensajeOperacion($name = null) {
+    if(!is_null($name)) {
+      self::set('MENSAJEOPERACION', $name);
+    } else {
+      return self::get('MENSAJEOPERACION');
+    }
+  }
+
+  public static
    function singleton() {
     if(self::$instance == null) {
       self::$instance = new self();

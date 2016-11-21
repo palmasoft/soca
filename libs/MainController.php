@@ -58,12 +58,14 @@ class Soca2 {
     if(is_file($controllerPath)) {
       require_once $controllerPath;
     } else {
+      echo "NO EXISTE EL ARCHIVO DEL CONTROLADOR [$controllerPath] ";
 //      Errores::contenido_error(103);
       return false;
     }
     if(class_exists($nombreControlador)) {
       $controller = new $nombreControlador();
     } else {
+      echo "NO EXISTE EL CONTROLADOR [$nombreControlador] ";
 //      Errores::contenido_error(201);
       return false;
     }
@@ -71,6 +73,7 @@ class Soca2 {
     if(is_callable(array($nombreControlador, $nombreAccion))) {
       $controller->$nombreAccion();
     } else {
+      echo "NO EXISTE LA FUNCION [$nombreAccion] EN EL CONTROLADOR [$nombreControlador] ";
 //      Errores::contenido_error(202);
       return false;
     }

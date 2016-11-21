@@ -1,9 +1,6 @@
 <?php
-
 Modelos::cargar("Sistema" . DS . "CargosEmpleados");
-
 class Usuarios extends Modelos {
-
   private static
    $nTabla = "usuarios";
   private static
@@ -15,6 +12,8 @@ SELECT
     , tiposempleado.*
     , cargosempleados.*
     , personas.*
+    , provincias.*
+    , cantones.*
     , tiposidentificacion.*
     , empleados.*
     , usuarios.*
@@ -30,10 +29,13 @@ FROM
         ON (empleados.empleadoTipo = tiposempleado.tipoempleadoId)
     INNER JOIN personas 
         ON (empleados.empleadoDatosPersonales = personas.personaId)
+    LEFT JOIN provincias 
+        ON (personas.personaProvincia = provincias.provinciaId)
+    LEFT JOIN cantones 
+        ON (personas.personaCanton = cantones.cantonId)
     INNER JOIN tiposidentificacion 
         ON (personas.personaTipoIdentificacion = tiposidentificacion.tipoIdentificacionId) 
 EOD;
-  
   private static
    $sqlJoin = "";
 
@@ -325,7 +327,7 @@ VALUES ( '" . session_id() . "', 'SALIDA', " . $idUsuario . ", " . $idPersona . 
 
   public static
    function insertar($usuarioPersona, $usuarioCargo, $usuarioTipo, $usuarioNombre, $usuarioClave, $usuarioCorreo,
-                     $usuarioTelefono = NULL, $usuarioAvatar = NULL) {
+   $usuarioTelefono = NULL, $usuarioAvatar = NULL) {
     $query = "INSERT INTO usuarios ( "
      . "usuarioPersona , usuarioCargo , usuarioTipo , usuarioNombre , usuarioClave , usuarioCorreo , usuarioTelefono , "
      . "usuarioAvatar , usuarioCreo  ) VALUES ( ? , ? , ? , ? , md5( ? ) , ? , ? , ?, ? ) ;";
@@ -342,7 +344,7 @@ VALUES ( '" . session_id() . "', 'SALIDA', " . $idUsuario . ", " . $idPersona . 
 
   public static
    function actualizar($usuarioId, $usuarioPersona, $usuarioCargo, $usuarioTipo, $usuarioNombre, $usuarioCorreo,
-                       $usuarioTelefono = NULL, $usuarioAvatar = NULL) {
+   $usuarioTelefono = NULL, $usuarioAvatar = NULL) {
     $query = "UPDATE usuarios SET usuarioPersona = ?  , usuarioCargo = ?  , usuarioTipo = ?  , usuarioNombre = ?  , usuarioCorreo = ?  , usuarioTelefono = ? , usuarioAvatar = ? WHERE usuarioId = ?;";
     $resultado = self::modificarRegistros(
       $query,
@@ -357,7 +359,7 @@ VALUES ( '" . session_id() . "', 'SALIDA', " . $idUsuario . ", " . $idPersona . 
 
   public static
    function actualizarSinAvatar($usuarioId, $usuarioPersona, $usuarioCargo, $usuarioTipo, $usuarioNombre,
-                                $usuarioCorreo, $usuarioTelefono = NULL) {
+   $usuarioCorreo, $usuarioTelefono = NULL) {
     $query = "UPDATE usuarios SET usuarioPersona = ?  , usuarioCargo = ?  , usuarioTipo = ?  , usuarioNombre = ?  , usuarioCorreo = ?  , usuarioTelefono = ? WHERE usuarioId = ?;";
     $resultado = self::modificarRegistros(
       $query,
