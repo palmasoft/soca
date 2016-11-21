@@ -287,10 +287,10 @@
       <!-- /.content-wrapper -->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
-          <b>Version</b> 2.3.6
+          <b>Versión</b> <?php echo Params::valor('version_sistema') ?>
         </div>
-        <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; <?php echo date('Y'
+         . ''); ?> <a href="http://puroingeniosamario.com.co" target="_blank">Puro Ingenio Samario</a>.</strong> Todos los derechos reservados.
       </footer>
       <!-- Control Sidebar -->
       <?php include 'inc'.DS.'barra-control.php'; ?>
