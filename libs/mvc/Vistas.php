@@ -44,18 +44,26 @@ class Vistas extends Base {
     return $response;
   }
 
-  public static function cargar($nombreVista, $varsVista = array(), $componente = '') {
+  public static function cargar($nombreVista, $varsVista = array(), $componente = '', $controlador = '',$desdeErrores = false) {
+    
     if($componente == '') {
       $componente = isset(self::$datos['componente']) ? strtolower(self::$datos['componente']) : $componente;
     }
-    $ruta_interna = $componente . DS . DIR_VISTAS . DS . $nombreVista . EXT_VISTAS;
+    if($controlador == '') {
+      $controlador = isset(self::$datos['controlador']) ? strtolower(self::$datos['controlador']) : $controlador;
+    }
+    $ruta_interna = $componente . DS . DIR_VISTAS . DS . $controlador . DS . $nombreVista . EXT_VISTAS;
     $path_base = PATH_COMPONENTES . $ruta_interna;
+    $path_base_css = PATH_COMPONENTES . $componente . DS . DIR_ESTILOS . DS . $controlador . DS . ( $desdeErrores ? 'errores' : self::$datos['controlador'] ) . ".css";
+    $path_base_datos = PATH_COMPONENTES . $componente . DS . $controlador . DS . DIR_VISTAS . DS . $controlador . DS;
+
 
     if(!file_exists($path_base)) {
       if($desdeErrores) {
         echo " Error Cargando Vista " . $componente . "/" . $nombreVista;
       } else {
-        Errores::mensaje_error(101);
+        echo " Error Cargando Vista " . $componente . "/" . $nombreVista;
+//        Errores::mensaje_error(101);
       }
       return false;
     }
@@ -69,7 +77,7 @@ class Vistas extends Base {
 
   public static function mostrar($nombreVista, $varsVista = array(), $componente = '', $controlador = '',
    $desdeErrores = false) {
-       
+
     if($componente == '') {
       $componente = isset(self::$datos['componente']) ? strtolower(self::$datos['componente']) : $componente;
     }

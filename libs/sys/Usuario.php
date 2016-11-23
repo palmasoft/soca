@@ -65,6 +65,20 @@ class Usuario extends Modelos {
     return $_SESSION['mensajesSistema'] = "";
   }
 
+  public static function codigoSedeEmpleado() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->sedeCodigo;
+    }
+    return "";
+  }
+
+  public static function sedeEmpleado() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->sedeNombre;
+    }
+    return "";
+  }
+
   public static function tipoEmpleado() {
     if(isset($_SESSION['OBJ_USR'])) {
       return $_SESSION['OBJ_USR']->tipoempleadoTitulo;
@@ -82,6 +96,13 @@ class Usuario extends Modelos {
   public static function fechaInicioEmpleado() {
     if(isset($_SESSION['OBJ_USR'])) {
       return $_SESSION['OBJ_USR']->empleadoInicia;
+    }
+    return "";
+  }
+
+  public static function fechaFinEmpleado() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->empleadoTermina;
     }
     return "";
   }
@@ -124,6 +145,20 @@ class Usuario extends Modelos {
   public static function fotoPersona() {
     if(isset($_SESSION['OBJ_USR'])) {
       return $_SESSION['OBJ_USR']->personaFotoReferencia;
+    }
+    return "";
+  }
+
+  public static function edadUsuario() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return Fechas::edad($_SESSION['OBJ_USR']->personaFechaNacimiento) . " años";
+    }
+    return "";
+  }
+
+  public static function firmaEscaneadaUsuario() {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR']->personaFirmaEscaneada;
     }
     return "";
   }

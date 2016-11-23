@@ -14,6 +14,9 @@ function iniciarPluginsSistema() {
 
 }
 
+function mostrarRespuesta(html) {
+  $("#div-respuestas").html(html);
+}
 function mostrarContenidos(modulo, controlador, accion, datos) {
   if (!_puede_salir_formulario) {
     confirm(
@@ -386,6 +389,6 @@ function desBloquearEscritorio() {
 
 
 bloqueoCargando();
-$(document).ready(function () {
+$(window).load(function () {
   setTimeout(desbloqueoCargando, 1234);
 });

@@ -373,8 +373,20 @@ VALUES ( '" . session_id() . "', 'SALIDA', " . $idUsuario . ", " . $idPersona . 
   }
 
   public static
+   function cambiarNombreUsuario($usuarioId, $usuarioNombre) {
+    $query = "UPDATE usuarios SET usuarioCorreo =  ? WHERE usuarioId = ?;";
+    $resultado = self::modificarRegistros(
+      $query, array($usuarioNombre, $usuarioId)
+    );
+    if(($resultado) > 0) {
+      return $resultado;
+    }
+    return NULL;
+  }
+
+  public static
    function cambiarClave($usuarioId, $usuarioClave) {
-    $query = "UPDATE usuarios SET usuarioClave = md5( ? )  WHERE usuarioId = ?;";
+    $query = "UPDATE usuarios SET usuarioClave = md5( ? ) WHERE usuarioId = ?;";
     $resultado = self::modificarRegistros(
       $query, array($usuarioClave, $usuarioId)
     );
@@ -385,24 +397,27 @@ VALUES ( '" . session_id() . "', 'SALIDA', " . $idUsuario . ", " . $idPersona . 
   }
 
   public static
-   function nuevoSinFoto($NICK, $PASSWORD, $EMAIL) {
-    $config = Config::singleton();
-    $query = "INSERT INTO " . self::$nTabla . "(NICK, PASSWORD, EMAIL )"
-     . "VALUES ('$NICK', AES_ENCRYPT('" . $PASSWORD . "', '" . $config->get("passEncript") . "'), '$EMAIL' )";
-    return self::crear_ultimo_id($query);
+   function nuevoSinFoto($usuarioNombre, $usuarioClave) {
+    $query = "INSERT INTO " . self::$nTabla . "(usuarioCorreo, usuarioClave )"
+     . "VALUES ('$usuarioNombre', MD5('" . $usuarioClave . "') )";
+    $resultado = self::modificarRegistros($query);
+    if(($resultado) > 0) {
+      return $resultado;
+    }
+    return NULL;
   }
 
   public static
    function editarSinFoto($ID_USUARIO, $NICK, $PASSWORD, $EMAIL) {
-    $config = Config::singleton();
-    $query = "
-UPDATE " . self::$nTabla . "
-SET
-NICK = '$NICK',
- PASSWORD = AES_ENCRYPT('" . $PASSWORD . "', '" . $config->get("passEncript") . "'),
- EMAIL = '$EMAIL'
-WHERE ID_USUARIO = $ID_USUARIO ";
-    return self::modificarRegistros($query);
+    $query = "INSERT INTO " . self::$nTabla . "(usuarioCorreo, usuarioClave )"
+     . "VALUES ('$NICK', MD5('" . $PASSWORD . "') )";
+    $resultado = self::modificarRegistros(
+      $query, array($usuarioClave, $usuarioId)
+    );
+    if(($resultado) > 0) {
+      return $resultado;
+    }
+    return NULL;
   }
 
   public static

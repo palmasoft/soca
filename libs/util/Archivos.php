@@ -1,5 +1,4 @@
 <?php
-
 class Archivos {
 
   static
@@ -187,7 +186,7 @@ class Archivos {
   }
 
   public static
-   function probar_crear_directorio($ruta) {
+   function probar_crear_directorio($ruta) {   
     $ok = TRUE;
     $carpetas = explode(DS, $ruta);
     $rActual = "";

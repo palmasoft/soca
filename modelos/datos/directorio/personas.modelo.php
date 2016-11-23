@@ -175,4 +175,30 @@ EOD;
     return NULL;
   }
 
+  //
+  //
+  //
+  //
+  //
+  //   
+  static public
+   function cambiarFoto($idPersona, $urlFoto) {
+    $query = " UPDATE personas SET personaFotoReferencia = ? WHERE personaId = ? ; ";
+    $resultado = self::modificarRegistros($query, array($urlFoto, $idPersona));
+    if(($resultado) > 0) {
+      return $resultado;
+    }
+    return NULL;
+  }
+
+  static public
+   function cambiarFirma($idPersona, $urlFirma) {
+    $query = " UPDATE personas SET personaFirmaEscaneada = ? WHERE personaId = ? ; ";
+    $resultado = self::modificarRegistros($query, array($urlFirma, $idPersona));
+    if(($resultado) > 0) {
+      return $resultado;
+    }
+    return NULL;
+  }
+
 }
