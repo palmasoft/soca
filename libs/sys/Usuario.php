@@ -11,6 +11,14 @@
  */
 Modelos::cargar('Datos' . DS . 'Sistema' . DS . 'Sesion');
 class Usuario extends Modelos {
+  
+  
+  public static function actualizarSesion($OBJ_USR) {
+    if(isset($_SESSION['OBJ_USR'])) {
+      return $_SESSION['OBJ_USR'] = $OBJ_USR;
+    }
+    return "";
+  }
 
   public static function fecha_hora_sistema() {
     $query = "SELECT CURRENT_TIMESTAMP AS FECHA_SISTEMA FROM DUAL;";

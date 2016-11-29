@@ -1,11 +1,9 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  * Description of Respuestas
  *
@@ -16,8 +14,8 @@ class Respuestas {
   public static
    function JSON($tipoRespuesta, $mensajeRespuesta) {
     return '{ '
-     . '"TIPO_RESPUESTA": "' . $tipoRespuesta . '",'
-     . '"MENSAJE_RESPUESTA": "' . $mensajeRespuesta . '"'
+     . '"TIPO_RESPUESTA": ' . json_encode($tipoRespuesta) . ','
+     . '"MENSAJE_RESPUESTA": ' . json_encode($mensajeRespuesta) . ''
      . ' }';
   }
 

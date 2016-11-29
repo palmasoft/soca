@@ -15,6 +15,7 @@ class Libs {
 
     require_once 'libs/util/Consola.php'; //de configuracion
     //UTILIDADES
+    require_once 'libs/util/AlertasHTML5.php'; //funciones para manejo de fecha
     require_once 'libs/util/Globales.php'; //funciones para manejo de fecha
     require_once 'libs/util/Archivos.php'; //funciones para manejo de archivos
     require_once 'libs/util/Xml.php'; //funciones para manejo de archivos

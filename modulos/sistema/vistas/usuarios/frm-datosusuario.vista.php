@@ -72,8 +72,11 @@
       var formData = new FormData(document.getElementById("frm-datosusuario"));
       ejecutarAccionArchivos('sistema', 'usuarios', 'actualizarDatosUsuarios', formData,
         function (resp) {
-          mostrarRespuesta(resp);
-          mostrarContenidos('sistema', 'usuarios', 'mostrarPerfil');
+          var datos = JSON.parse(resp);
+          if (datos.TIPO_RESPUESTA === "EXITO") {
+            mostrarContenidos('sistema', 'usuarios', 'mostrarPerfil');
+          }
+          mostrarRespuesta(datos.MENSAJE_RESPUESTA);
         });
     });
   });
